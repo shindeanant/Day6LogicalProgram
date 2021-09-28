@@ -1,44 +1,45 @@
 package com.logicalProgram;
 
-import java.util.Scanner;
-
 public class LogicalProgram {
 
-	static boolean checkPerfectSquare(double number) {
+	static boolean check(int number) {
 
-		for (int i = 1; i * i <= number; i++) {
+		// Returning false when the number is either 0 or 1 because 0 and 1 cannot be
+		// prime numbers
 
-			// if (i * i = number)
-			// comparing conditions using logical AND
+		if (number == 0 || number == 1) {
 
-			if ((number % i == 0) && (number / i == i)) {
+			return false;
 
-				// returns true if both conditions are true
+		} else {
 
-				return true;
+			// When the number is not 0 and 1
+
+			for (int i = 2; i <= number / 2; i++) {
+
+				if (number % i == 0) {
+
+					return false;
+
+				}
 			}
+
+			return true;
+
 		}
-		// returns false if any one condition is false
-		return false;
 	}
 
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to the Logical Programs");
 
-		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i <= 50; i++) {
 
-		System.out.print(" Enter a number : ");
+			if (check(i)) {
 
-		double number = sc.nextDouble();
-
-		if (checkPerfectSquare(number))
-
-			System.out.println("Yes, the given number is perfect square.");
-
-		else
-
-			System.out.print("No, the given number is not perfect square.");
+				System.out.println(i + " " + "is a Prime number");
+			}
+		}
 
 	}
 
