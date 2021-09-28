@@ -4,37 +4,41 @@ import java.util.Scanner;
 
 public class LogicalProgram {
 
+	static boolean checkPerfectSquare(double number) {
+
+		for (int i = 1; i * i <= number; i++) {
+
+			// if (i * i = number)
+			// comparing conditions using logical AND
+
+			if ((number % i == 0) && (number / i == i)) {
+
+				// returns true if both conditions are true
+
+				return true;
+			}
+		}
+		// returns false if any one condition is false
+		return false;
+	}
+
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to the Logical Programs");
 
-		int number;
-
-		int first = 0;
-
-		int next = 1;
-
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter how may fibonnaci numbers to print");
+		System.out.print(" Enter a number : ");
 
-		number = sc.nextInt();
+		double number = sc.nextDouble();
 
-		System.out.print("The first " + number + " Fibonacci numbers are: ");
+		if (checkPerfectSquare(number))
 
-		System.out.print(first + " " + next);
+			System.out.println("Yes, the given number is perfect square.");
 
-		for (int i = 1; i <= number - 2; ++i) {
+		else
 
-			int sum = first + next;
-
-			first = next;
-
-			next = sum;
-
-			System.out.print(" " + sum);
-
-		}
+			System.out.print("No, the given number is not perfect square.");
 
 	}
 
