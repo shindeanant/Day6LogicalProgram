@@ -1,31 +1,24 @@
 package com.logicalProgram;
 
+import java.util.Scanner;
+
 public class LogicalProgram {
 
-	static boolean check(int number) {
+	public static void reverseNumber(int number) {
 
-		// Returning false when the number is either 0 or 1 because 0 and 1 cannot be
-		// prime numbers
+		if (number < 10) {
 
-		if (number == 0 || number == 1) {
+			// prints the same number if the number is less than 10
 
-			return false;
+			System.out.println(number);
+
+			return;
 
 		} else {
 
-			// When the number is not 0 and 1
+			System.out.print(number % 10);
 
-			for (int i = 2; i <= number / 2; i++) {
-
-				if (number % i == 0) {
-
-					return false;
-
-				}
-			}
-
-			return true;
-
+			reverseNumber(number / 10);
 		}
 	}
 
@@ -33,13 +26,17 @@ public class LogicalProgram {
 
 		System.out.println("Welcome to the Logical Programs");
 
-		for (int i = 0; i <= 50; i++) {
+		System.out.print(" Enter the number that you want to reverse : ");
 
-			if (check(i)) {
+		Scanner sc = new Scanner(System.in);
 
-				System.out.println(i + " " + "is a Prime number");
-			}
-		}
+		int num = sc.nextInt();
+
+		System.out.print(" The reverse of the given number is : ");
+
+		// method calling
+
+		reverseNumber(num);
 
 	}
 
