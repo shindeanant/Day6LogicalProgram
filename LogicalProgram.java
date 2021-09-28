@@ -1,29 +1,77 @@
 package com.logicalProgram;
 
+import java.util.Scanner;
+
 public class LogicalProgram {
+
+	public long startWatch = 0;
+	public long stopWatch = 0;
+	public long totalTime = 0;
+
+	public long startTime() {
+
+		System.out.println("Stop watch  started... Press 2 to stop watch");
+
+		long startWatch = System.currentTimeMillis();
+
+		return startWatch;
+	}
+
+	public long endTime() {
+
+		System.out.println(" Watch Stopped..");
+
+		long stopWatch = System.currentTimeMillis();
+
+		return stopWatch;
+	}
 
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to the Logical Programs");
 
-		char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".toCharArray();
+		StopWatch sw = new StopWatch();
 
-		int max = 100000000;
+		boolean valid = false;
 
-		int random = (int) (Math.random() * max);
+		while (valid == false) {
 
-		StringBuffer sb = new StringBuffer();
+			System.out.print("Enter 1 to start Time : ");
 
-		while (random > 0) {
+			Scanner sc = new Scanner(System.in);
 
-			sb.append(chars[random % chars.length]);
+			valid = true;
 
-			random /= chars.length;
+			if (sc.hasNextInt()) {
+
+				int number = sc.nextInt();
+
+				if (number == 1) {
+
+					long startTime = sw.startTime();
+
+					// System.out.print("Enter 2 to End Time : "+s_time);
+					int stop = sc.nextInt();
+
+					if (stop == 2) {
+
+						long endTime = sw.endTime();
+
+						long time = (endTime - startTime) / 1000;
+
+						System.out.println("total seconds Watch is on: " + time);
+
+					} else {
+
+						System.out.print("Enter 2 to stop the Watch: ");
+					}
+				}
+
+			} else {
+
+				System.out.println("Enter Digits Only");
+			}
 		}
-
-		String couponCode = sb.toString();
-
-		System.out.println("Coupon Code: " + couponCode);
 
 	}
 
